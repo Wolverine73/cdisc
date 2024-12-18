@@ -1,0 +1,92 @@
+
+
+github sas sdtm search - https://github.com/search?q=sdtm+language%3ASAS&type=repositories&l=SAS&s=updated&o=desc
+
+
+
+sas-clinical-trials-toolkit = cool programs:  https://github.com/wyp1125/SAS-Clinical-Trials-Toolkit/tree/master
+
+metadata solutions:  https://github.com/srosanba/sas-sdtm-simulator/tree/master/macros
+metadata solutions - macros: https://github.com/srosanba/sas-sdtm-simulator/tree/master/macros
+
+clinical data transformation: crf to sdtm - https://github.com/Vijayalakshmi30/SAS-Projects---SDTM
+
+	Clinical Data Transformation: CRF to SDTM
+	This repository contains SAS scripts and workflows developed for transforming raw Case Report Form (CRF) data into the 
+	standardized Study Data Tabulation Model (SDTM) format. The project includes data transformations for critical clinical 
+	domains, including Demographics (DM), Vital Signs (VS), Exposure (EX), Medical History (MH), and Disposition (DS). 
+	Each program adheres to CDISC standards to ensure data consistency, accuracy, and interoperability for clinical trials.
+
+	Overview
+	This project contains SAS code and processes for transforming raw clinical data collected from Case Report Forms (CRF) 
+	into the Study Data Tabulation Model (SDTM) format. This conversion ensures data consistency and standardization 
+	for use in clinical trial analysis and regulatory submissions. The repository includes transformations for the following domains:
+
+	DM: Demographics
+	VS: Vital Signs
+	EX: Exposure
+	MH: Medical History
+	DS: Disposition
+	Each program follows the CDISC standards, facilitating interoperability and compliance for data reporting and submission.
+
+	Project Details
+	DM (Demographics): Converts participant demographic data, including age, gender, and ethnicity, into the SDTM-compliant structure.
+	VS (Vital Signs): Transforms vital signs measurements, such as blood pressure and heart rate, ensuring standardized units and format.
+	EX (Exposure): Tracks participant exposure to treatments or interventions, ensuring precise records of dosing and administration.
+	MH (Medical History): Standardizes patient medical history, organizing records for consistency across clinical analysis.
+	DS (Disposition): Summarizes participant disposition information, including withdrawal, completion, or other statuses.
+	
+clinical data analysis: sdtm to adam transformation - https://github.com/Vijayalakshmi30/SAS-Projects---ADaM	
+
+	Clinical Data Analysis: SDTM to ADaM Transformation
+	This repository features SAS code for converting Study Data Tabulation Model (SDTM) data into Analysis Data Model (ADaM)
+	datasets, including domains for Adverse Events (ADAE), Exposure (ADEX), Time-to-Event (ADTTE), and Subject-Level Analysis 
+	(ADSL). Each transformation adheres to CDISC standards, enabling consistent, high-quality clinical data analysis.
+
+	Overview
+	This project contains SAS programs and workflows to transform clinical trial data from the Study Data Tabulation Model 
+	(SDTM) format to the Analysis Data Model (ADaM) format, aligning with CDISC standards. The transformation supports 
+	clinical data analysis for regulatory submission and reporting.
+
+	The repository includes transformations for the following ADaM domains:
+
+	ADAE: Adverse Events Analysis
+	ADEX: Exposure Analysis
+	ADTTE: Time-to-Event Analysis
+	ADSL: Subject-Level Analysis
+
+	Project Details
+	ADAE (Adverse Events Analysis): Aggregates adverse event data, aligning with ADaM standards to support safety analysis.
+	ADEX (Exposure Analysis): Prepares dosing and exposure data to allow for comprehensive treatment assessments.
+	ADTTE (Time-to-Event Analysis): Converts survival or event-time data, structured for time-to-event analysis in clinical trials.
+	ADSL (Subject-Level Analysis): Produces subject-level data containing demographic and baseline information required for study analysis.
+		
+https://github.com/saugat078/DM-domain
+https://github.com/saugat078/sdtm-adam
+
+
+a lot of logic....
+https://github.com/meenakshiswami/sdtm
+
+
+xpt data files...
+https://github.com/dominodatalab/CLINICAL_DATA_MANAGEMENT_TEMPLATE/tree/main/prod/sdtm
+
+
+code + data......... dude that works at m-estimator llc
+https://github.com/theoaladeyemo?tab=repositories
+https://github.com/theoaladeyemo/02.SDTM-Dataset-Development-Laboratory-
+
+
+project to create sdtm dm...............
+https://github.com/OBA0700/Clinical-Project-SDTM_DM
+
+
+https://github.com/rohit-sas/Phase2OvCa-SDTM
+
+https://github.com/rogerjdeangelis/utl-end-to-end-cdisc-SDTM-ADaM-processing
+
+
+macros + test data with cards.............
+https://github.com/TrialSAS/implement-cdisc-using-sas/tree/main/macros
+
