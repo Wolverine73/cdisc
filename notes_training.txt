@@ -1,5 +1,6 @@
 
 -----------------------------------------------------------------------------------------------
+logins
 
 code - http://support.sas.com/bookcode (cdisc - hollande + shostak)
 brian.stropich@gmail.com
@@ -11,8 +12,7 @@ Bss#101699
 
 
 -----------------------------------------------------------------------------------------------
-
-documentation............................
+terms + documentation
 
 crf - case report form
 clinical protocol
@@ -23,6 +23,7 @@ cdash -
 sdtm - study data tabulation model 
 adam -
 
+clinical trial edc databases - capture crf data
 
 clinical study - CROs, pharma, biotech
 electronic data capture (EDC) system is a software platform that collects, manages, and stores clinical trial data electronically.
@@ -59,9 +60,9 @@ The SDTM Process
 SDTM Validation and Quality Check
 https://www.amarexcro.com/resources/chaos-to-clarity-journey-converting-raw-data-into-sdtm-datasets
 
------------------------------------------------------------------------------------------------
 
-difference between sdtm and sdtmig.......................................
+
+difference between sdtm and sdtmig
 
 in simpler terms... SDTM is the blueprint, 
 and SDTMIG is the instruction manual for building the data structure based on that blueprint
@@ -101,10 +102,40 @@ There are different types of clinical arms, including:
 
 
 
+In CDISC (Clinical Data Interchange Standards Consortium), a "Statistical Analysis Plan" (SAP) 
+is a detailed document that outlines the exact statistical methods and procedures that will 
+be used to analyze data collected during a clinical trial, ensuring transparency and reproducibility 
+in the interpretation of results; it specifies which data will be analyzed, the patient populations
+to be assessed, and the statistical methods to be applied, essentially acting as a blueprint for
+the data analysis process within a clinical trial. 
 
-youtube notes.....
+Key points about SAP in CDISC:
+
+Purpose:
+To clearly define how clinical trial data will be analyzed, including population selection, 
+analysis methods, and how results will be presented, ensuring consistency and adherence to 
+regulatory standards. 
+
+Content:
+The SAP typically includes details like primary and secondary endpoints, statistical tests 
+to be used, data transformations, missing data handling strategies, and planned analysis
+populations. 
+
+Importance in CDISC:
+By using standardized CDISC standards, particularly the ADaM (Analysis Dataset Model), 
+researchers can ensure that the data is properly formatted and ready for analysis according 
+to the specifications outlined in the SAP. 
+
+Relationship with other documents:
+The SAP is closely linked to the clinical trial protocol, as it provides the statistical 
+details behind the trial design and objectives. 
+
+
 
 ---------------------------------------------------------------------------------
+youtube training
+
+
 
 CDISC What is SDTM 
 https://www.youtube.com/watch?v=L2EwLnIuMwg
@@ -813,46 +844,264 @@ worflow
 		submit study 
 			
 
-				  
-
-	
-
----------------------------------------------------------------------------------	
-
-terms:
-
-In CDISC (Clinical Data Interchange Standards Consortium), a "Statistical Analysis Plan" (SAP) 
-is a detailed document that outlines the exact statistical methods and procedures that will 
-be used to analyze data collected during a clinical trial, ensuring transparency and reproducibility 
-in the interpretation of results; it specifies which data will be analyzed, the patient populations
-to be assessed, and the statistical methods to be applied, essentially acting as a blueprint for
-the data analysis process within a clinical trial. 
-
-Key points about SAP in CDISC:
-
-Purpose:
-To clearly define how clinical trial data will be analyzed, including population selection, 
-analysis methods, and how results will be presented, ensuring consistency and adherence to 
-regulatory standards. 
-
-Content:
-The SAP typically includes details like primary and secondary endpoints, statistical tests 
-to be used, data transformations, missing data handling strategies, and planned analysis
-populations. 
-
-Importance in CDISC:
-By using standardized CDISC standards, particularly the ADaM (Analysis Dataset Model), 
-researchers can ensure that the data is properly formatted and ready for analysis according 
-to the specifications outlined in the SAP. 
-
-Relationship with other documents:
-The SAP is closely linked to the clinical trial protocol, as it provides the statistical 
-details behind the trial design and objectives. 
 
 
 ---------------------------------------------------------------------------------
-job descriptions:
 
+video 8:
+
+sdtm
+
+	study
+	review documents
+		protocol
+		raw datasets
+		sdtm IG 3.2
+		crf - case report form
+		sop - standard operation procedure
+		sap - statistical analysis procedure
+		
+	acrf - blank crf with annotations that document the location of data with dataset names and variables	
+		blank crf
+		protocol
+		crf
+		sdtm IG 3.2
+		raw datasets
+		saved as pdf and named blankcrf.pdf
+		approach
+			determine annotations in which pages and store them into an excel file
+			develop a sas application which generates xfdf file containing annotation
+			import xxfdf file inot pdf file and manual placement of the annotations-boxes in ther exact location
+			
+		
+	you are going to prepare
+		excel
+		crf columns 
+		sas = excel = xfdf
+		
+	sdtm mapping specification
+		utilize a spec from another project or create new
+		
+	programming plan / programming implementation
+		TL or scrum master
+		who is working on 
+		5 domains and 5 porgammers
+		
+	sdtm output (
+		results - sas datasets
+		in compliant with sdtm IG
+		
+	converting sas datasets into xpt files
+	
+	
+	pinnacle 21 
+	
+		
+	define.xml (used for submission
+	validation notes
+	
+	
+	submit study
+	
+
+sdtm domains
+
+	notes... 
+	dataset is grouping of observations
+	domain is grouping of observations related from each dataset 
+
+
+	special purpose domains
+		dm - demographics
+		co - comments (comments by the investigator)
+		se - subject elements (element - clinical trial phase)
+		sv - subject visits   (approach - group of elements)	
+	interventions
+		ex - exposure
+		ec - exposure as collected
+		cm - concomitant medication
+		su - substance use		
+	events
+		ae - adverse events
+		mh - medical history
+		ds - disposition
+		dv - protocol deviation
+		ce - clinical events		
+	findings
+		lb - labaratory
+		vs - vital signs
+		eg - ecg test
+		pe - physical examination
+		ie - inclusion exclusion criteria
+		dd - death details
+		da - drug accountability	
+	trial design models
+		ta - trial arm
+		ts - trial summaruy
+		te - trial events
+		tv - trial visits
+		ti - trial inclusion 
+		
+	supplementary domains
+	
+	relrec domains
+	
+	
+sdtm IG
+	variable name
+	variable label
+	type
+	controlled terms, codelist, format
+	role
+	cdisc notes
+	core
+	
+	1. domain name contain only 2 letters
+	2. every domain should have proper label 
+		40 character max
+		label is prop case
+	3. variable names will not exceed 8 characters
+		USUBJID
+		AGE
+		SEX
+	4. final output should be in compliance sdtm IG 3.2
+	
+	5.  all sdtm date variables are character data type
+		iso 8601 - date time
+		date = 2022-04-07 = yymmdd10.
+		iso8601da = 2022-04-07
+		iso8601dt = 2022-04-07T21:00:00		
+		
+	core
+		req - required
+			cannot be null
+			example - usubjid, sex, age
+		
+		exp - expected
+			variable must be included in domain
+			value is good to have but missing values are acceptable
+			sponsor will determine if variable shouldbe include or exclude
+			examplle - deathdate
+			
+		perm - permissable
+			depends on sponsor to include or exclude these variables
+			value is good to have but missing values are acceptable
+			example - investigator name (invnam)
+			
+			sponsor will supply datasets so variables will be available or not
+			if they are there good if not then who cares
+			sponsor will make them avaialble or not
+			
+			required variable missing then meeting required
+			
+			mapping specification should have available
+			if in crf and loaded BRTHDTC then we take it
+			if BRTHDTC not availalbe then no value
+						
+	role
+		identifier variables
+		timing variables
+		topic variables
+		rule variables
+		
+	qualifiers
+		record qualifier
+		result qualifier
+		grouping qualifier
+		synonym qualifier
+		variable qualifier
+			
+	cdisc notes
+		
+		
+	note - important information within the interviews
+		
+---------------------------------------------------------------------------------
+
+video 9:		
+
+sdtm guidelines
+
+	1. domain name can only contain 2 characters
+		observation - rows in ad dataset are consistent of a series of named variables
+	2. every domain should have a proper label
+		label = dm = description / overview for the demographics domain model
+		domain - collection of observations on a particular topic
+	3. variable names will not excee 8 characters long
+		variable - column in a dataset... variables can be classified according to role
+	4. final output should be in compliance with sdtm IG 3.2
+		role - describes type of information by the variable and how used
+	5. all sdtm date variables are of character data type
+
+
+role - 4 different roles
+	identifier variables - gives identification
+		domain
+		studyid
+		usubjid
+	timing variables
+		start date
+		end date
+		collection date
+		measurement date
+		example - AESTDTC (adverse event start date)
+			  AEENDTC
+			  LBDTC
+			  VSDTC
+	topic variables
+	
+		special purpose domains - only 1 topic variable per domain
+			dm - demographics			- subjid
+			co - comments				- coval
+			se - subject elements			- etcd
+			sv - subject visits			- visitnum			
+		interventions - all treatment related - xxtrt				
+			ex - exposure				- extrt
+			ec - exposure as collected		- extrt
+			cm - concomitant medication		- cmtrt
+			su - substance use			- sutrt	
+		events - something already happened - xxterm
+			ae - adverse events			- aeterm
+			mh - medical history			- mhterm
+			ds - disposition			- dsterm
+			dv - protocol deviation			- dvterm
+			ce - clinical events			- csterm
+		findings - all related to test category - xxtestcd
+			lb - labaratory				- lbtestcd
+			vs - vital signs			- vstestcd
+			eg - ecg test				- egtestcd
+			pe - physical examination		- petestcd
+			ie - inclusion exclusion criteria	- ietestcd
+			dd - death details			- ddtestcd
+			da - drug accountability		- datestcd	
+		trial design models
+			ta - trial arm				- armcd
+			ts - trial summaruy			- taparmcd
+			te - trial events			- etcd (same as sv)
+			tv - trial visits			- visitnum (same as sv)
+			ti - trial inclusion 			- ietestcd (same as ie)		
+			
+			
+	rule variables
+
+qualifiers
+	record qualifier
+	result qualifier
+	grouping qualifier
+	synonym qualifier
+	variable qualifier
+
+
+------------------------- start
+CDISC SDTM ADaM Online Training??SAS Clinical Projects Training??Clinical SAS Training by Experts - 8
+https://www.youtube.com/watch?v=Vg_53o9S-DA&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=10
+stopped on 32:00 / 55:11
+
+
+---------------------------------------------------------------------------------
+company + pharma + cro:
+
+company sites  
 https://careers.medpace.com/jobs?keywords=sas&location=&page=1&sortBy=relevance&country=United%20States
 https://www.syneoshealth.com/careers/jobs/15213319-sr-statistical-programmer
 https://jobs.iqvia.com/en/search-jobs/sas/United%20States/24443/1/2/6252001/39x76/-98x5/50/2
@@ -871,8 +1120,7 @@ https://www.taihooncology.com/us/careers/job-postings/
 https://springworkstx.com/careers/view-opportunities
 
 
-
-Top 17 Clinical Research Organizations (CRO) in 2023
+Top Clinical Research Organizations (CRO)
 https://guides.clarahealth.com/top-clinical-research-organizations/
 https://www.ventureradar.com/startup/CRO
 https://www.proclinical.com/blogs/2024-5/top-10-cros-to-watch-in-2024
@@ -895,9 +1143,7 @@ https://www.proclinical.com/blogs/2024-5/top-10-cros-to-watch-in-2024
 	Clinipace
 
 
-/
-
-top 100 Pharma Companies ranking, 2024
+top 100 Pharma Companies
 https://www.chemanalyst.com/ChemAnalyst/PharmaCompanies
 https://www.contractpharma.com/heaps/view/11641/1/
 
@@ -923,6 +1169,8 @@ https://www.contractpharma.com/heaps/view/11641/1/
 	19	Boehringer Ingelheim            
 	20	Gilead                          
 
+---------------------------------------------------------------------------------
+job descriptions:
 
 Senior Statistical Analyst (Remote)
 AbbVie
@@ -1004,7 +1252,6 @@ Cytel • Wisconsin • via Jobgether
 	Ability to provide quality output and deliverables, in adherence with challenging timelines
 	Ability to work effectively and successfully in a globally dispersed team environment with cross-cultural partners
 
-
 	Responsibilities
 	This role can be performed as fully remote
 	Performing data manipulation, analysis and reporting of clinical trial data, both safety and efficacy (ISS/ISE), utilizing SAS programming
@@ -1019,10 +1266,8 @@ Cytel • Wisconsin • via Jobgether
 	Being adaptable and flexible when priorities change
 
 
-
 Principal Statistical data scientist
 Pfizer
-
 	Responsibilities
 	At least 5 - 6 years relevant experience in a pharmaceutical, biotech, CRO, or Regulatory Agency.
 	Accountable for the quality and timely delivery of of enterprise, study and asset level deliverables of standard statistical programming encompassing the following areas: CDISC SDTM, ADaM, and TLF generation
@@ -1035,85 +1280,58 @@ Pfizer
 	May contribute to department level initiatives
 
 
-
-
-
-
-
 Statistical Programmer II at McKesson Indiana
 McKesson • Indiana • via Palagrit
 
-Job highlights
-Identified by Google from the original job post
-Qualifications
-100% telecommuting allowed from anywhere in the U.S
-REQUIREMENTS: Bachelor's degree, or foreign equivalent, in Computer Science, Business Analytics, 
-Statistics, Engineering, or related field and one (1) year of experience in the job offered or related occupation
-Must have one (1) year of experience in each of the following skills: DB SAS BASE, SAS MACROS, 
-SAS/GRAPH, SAS SQL, SAS, SAS and STAT; Pinnacle 21; SDTM IG V3.2; Adam IG V1.1; working with 
-Oncology data and end points including Overall Survival, Progression Free Survival, Time to 
-Response, Time to Progression, and Duration of Response; Microsoft Suite; Data Queries; and 
-Data Mining, Windows OS, Beyond Compare
-Benefits
-OFFERED WAGE: $85,600 - $142,600 /year
-As part of Total Rewards, we are proud to offer a competitive compensation package
-In addition to base pay, other compensation, such as an annual bonus or long-term incentive opportunities may be offered
+	Qualifications: 
+	Bachelor's degree, or foreign equivalent, in Computer Science, Business Analytics, 
+	Statistics, Engineering, or related field and one (1) year of experience in the job offered or related occupation
+	Must have one (1) year of experience in each of the following skills: DB SAS BASE, SAS MACROS, 	SAS/GRAPH, SAS SQL, SAS, SAS and STAT; Pinnacle 21; SDTM IG V3.2; Adam IG V1.1; 
+	working with Oncology data and end points including Overall Survival, Progression Free Survival, Time to 
+	Response, Time to Progression, and Duration of Response; Microsoft Suite; Data Queries; and Data Mining, Windows OS, Beyond Compare
 
-Responsibilities
-LOCATION: 6555 State Highway 161, Irving, TX 75039
-
-DUTIES: Create tables, figures, and listings using SAS, and provide support to the data management
-team in resolving data issues
-Create and validate SAS programs and datasets that comply with Study Data Tabulation Model datasets
-(SDTM) & Analysis Data Model datasets (ADAM), which are defined by Clinical Data Interchange
-Standards Consortium (CDISC)
-
-Communicate with Biostatisticians to formulate a statistical analysis plan (SAP) for clinical 
-studies and annotated the CRF (Case Report Form)
-
-Compile reports, charts, and graphs to interpret and describe findings of data analysis
-
-Gather requirements and specifications for data analysis and report generation by interacting 
-with clinical scientists, biostatisticians, and data management teams
-
-Work on optimization of SAS programs to make them run more efficiently to give better productivity
-
-Update the SDTM and ADAM datasets by analyzing issues reported through Pinnacle 21 validator
-Work on ad hoc analysis by providing outputs to support submissions/conferences like DSUR and ASCO
-
+	Responsibilities: 
+	Create tables, figures, and listings using SAS, and provide support to the data management team in resolving data issues
+	Create and validate SAS programs and datasets that comply with SDTM & ADAM. which are defined by CDISC
+	Communicate with Biostatisticians to formulate a statistical analysis plan (SAP) for clinical studies and annotated the CRF (Case Report Form)
+	Compile reports, charts, and graphs to interpret and describe findings of data analysis
+	Gather requirements and specifications for data analysis and report generation by interacting with clinical scientists, biostatisticians, and data management teams
+	Work on optimization of SAS programs to make them run more efficiently to give better productivity
+	Update the SDTM and ADAM datasets by analyzing issues reported through Pinnacle 21 validator 
+	Work on ad hoc analysis by providing outputs to support submissions/conferences like DSUR and ASCO
 
 
 Responsibilities
-Perform the role of the Lead Statistical Programmer
-Plan, execute and oversee all programming activities on a study, including but not limited to, resource estimation, working within budget, meeting timelines, maximizing quality, interaction with other departments and the client, etc
-Develop and maintain SAS programs to create complete SDTM and ADaM datasets and TFLs, and perform QC of SDTM, ADaMs and TFLs
-Produce Define XML/PDFs, Analysis Results Metadata (ARM), aCRFs and Reviewers Guides to support SDTMs and ADaMs
-Develop and/or lead the development of complex specifications for SDTMs and ADaM datasets and contribute to the development of Labcorp Drug Development and Client standards
-Review SAPs and TFL shells from a programming perspective for studies and advise on the development of complex TFL shells from a programming perspective
-Mentor less-experience programmers in the processes around SDTMs, ADaMs and TFLs ensuring adherence to department practices and processes
-Present and share knowledge at department meetings
-Respond to QA and client audits and support qualification audits
-Contribute to proposal activities and participate in bid defenses meetings in order to win new business
-Continually identify and suggest ways to improve the efficiency, quality and productivity of statistical programming
-And all other duties as needed or assigned
+	Perform the role of the Lead Statistical Programmer
+	Plan, execute and oversee all programming activities on a study, including but not limited to, resource estimation, working within budget, meeting timelines, maximizing quality, interaction with other departments and the client, etc
+	Develop and maintain SAS programs to create complete SDTM and ADaM datasets and TFLs, and perform QC of SDTM, ADaMs and TFLs
+	Produce Define XML/PDFs, Analysis Results Metadata (ARM), aCRFs and Reviewers Guides to support SDTMs and ADaMs
+	Develop and/or lead the development of complex specifications for SDTMs and ADaM datasets and contribute to the development of Labcorp Drug Development and Client standards
+	Review SAPs and TFL shells from a programming perspective for studies and advise on the development of complex TFL shells from a programming perspective
+	Mentor less-experience programmers in the processes around SDTMs, ADaMs and TFLs ensuring adherence to department practices and processes
+	Present and share knowledge at department meetings
+	Respond to QA and client audits and support qualification audits
+	Contribute to proposal activities and participate in bid defenses meetings in order to win new business
+	Continually identify and suggest ways to improve the efficiency, quality and productivity of statistical programming
+	And all other duties as needed or assigned
 
 
 Responsibilities
-As a Principal Statistical Programmer with a specialized focus on PK/PD, you will play a pivotal role in the design, execution, and analysis of clinical trials to support the development of our promising drug candidates
-Leveraging your extensive knowledge of statistical programming and PK/PD principles, you will collaborate closely with cross-functional teams of scientists, clinical researchers, and biostatisticians to ensure the successful implementation of our clinical development programs
-PK/PD Data Analysis:
-Conduct comprehensive PK/PD data analysis using appropriate statistical methodologies to support clinical trial designs and assist in decision-making processes
-Statistical Programming:
-Develop and implement robust and efficient statistical programming solutions for analyzing PK/PD data, adhering to industry best practices and regulatory standards
-Protocol Development:
-Provide valuable input during protocol development, ensuring proper incorporation of PK/PD endpoints and statistical methodologies
-Clinical Trial Support:
-Collaborate with cross-functional teams to ensure the timely and accurate delivery of PK/PD data analysis for ongoing clinical trials, supporting data interpretation and presentation
-Regulatory Submissions:
-Contribute to regulatory submissions by preparing and validating PK/PD datasets, analysis outputs, and documentation in compliance with relevant regulatory guidelines
-Innovation and Methodology:
-Stay abreast of the latest developments in PK/PD methodologies, statistical programming techniques, and industry best practices, and apply them effectively to enhance drug development strategies
-Drive continuous improvement in statistical programming processes and contribute to the development of standard operating procedures (SOPs) to streamline PK/PD data analysis
-IQVIA’s ability to operate and provide certain services to customers and partners necessitates IQVIA and its employees meet specific requirements regarding COVID-19 vaccination status
+	As a Principal Statistical Programmer with a specialized focus on PK/PD, you will play a pivotal role in the design, execution, and analysis of clinical trials to support the development of our promising drug candidates
+	Leveraging your extensive knowledge of statistical programming and PK/PD principles, you will collaborate closely with cross-functional teams of scientists, clinical researchers, and biostatisticians to ensure the successful implementation of our clinical development programs
+	PK/PD Data Analysis:
+	Conduct comprehensive PK/PD data analysis using appropriate statistical methodologies to support clinical trial designs and assist in decision-making processes
+	Statistical Programming:
+	Develop and implement robust and efficient statistical programming solutions for analyzing PK/PD data, adhering to industry best practices and regulatory standards
+	Protocol Development:
+	Provide valuable input during protocol development, ensuring proper incorporation of PK/PD endpoints and statistical methodologies
+	Clinical Trial Support:
+	Collaborate with cross-functional teams to ensure the timely and accurate delivery of PK/PD data analysis for ongoing clinical trials, supporting data interpretation and presentation
+	Regulatory Submissions:
+	Contribute to regulatory submissions by preparing and validating PK/PD datasets, analysis outputs, and documentation in compliance with relevant regulatory guidelines
+	Innovation and Methodology:
+	Stay abreast of the latest developments in PK/PD methodologies, statistical programming techniques, and industry best practices, and apply them effectively to enhance drug development strategies
+	Drive continuous improvement in statistical programming processes and contribute to the development of standard operating procedures (SOPs) to streamline PK/PD data analysis
+	IQVIA’s ability to operate and provide certain services to customers and partners necessitates IQVIA and its employees meet specific requirements regarding COVID-19 vaccination status
 
 ---------------------------------------------------------------------------------
