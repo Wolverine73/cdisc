@@ -10,6 +10,8 @@ cdisc - https://library.cdisc.org
 brianstropich@hotmail.com
 Bss#101699
 
+youtube - fastforward by 5 seconds = right arrow
+
 
 -----------------------------------------------------------------------------------------------
 terms + documentation
@@ -31,6 +33,9 @@ edc systems = medidata, redcap, oracle clinical, rave, veeva, medrio
 cdm - clinical data management 
 gcp - good clinical practice
 
+https://clinicaltrials.gov/
+https://clinicaltrials.gov/search?term=Adaptimmune
+https://clinicaltrials.gov/study/NCT03391778?term=Adaptimmune&rank=1
 
 terminology:
 https://www.cdisc.org/standards/terminology/controlled-terminology
@@ -208,7 +213,7 @@ observation classes
 	
 ---------------------------------------------------------------------------------
 
-video 1:
+video 0:
 
 What is CDISC SDTM ADaM & TLF'S? | Role of SAS Programmer in Clinical Trail Process & Phases 
 https://www.youtube.com/watch?v=zJrRyXgM_qU&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO
@@ -293,7 +298,7 @@ clinical trial phases
 	
 ---------------------------------------------------------------------------------
 
-video 2:
+video 1:
 
 what are clinical trials?
 	safety 
@@ -352,7 +357,7 @@ clinical are done in phases
 			
 ---------------------------------------------------------------------------------
 
-video 3:
+video 2:
 
 sponsor
 r&d facility
@@ -437,7 +442,7 @@ a research protocol is a document that describers the background, rationale, obj
 
 ---------------------------------------------------------------------------------
 
-video 4:
+video 3:
 
 clinical trials
 	treatment
@@ -538,7 +543,7 @@ https://ichgcp.net/6~clinical~trial~protocol~and~protocol~admendments
 
 ---------------------------------------------------------------------------------
 
-video 5:
+video 4:
 
 protocol
 	elements
@@ -587,7 +592,7 @@ protocol
 
 ---------------------------------------------------------------------------------
 
-video 6:
+video 5:
 
 clinical trial protocol
 	a clinical trial protocol is a document describing...
@@ -749,7 +754,7 @@ study design
 		
 ---------------------------------------------------------------------------------
 
-video 7:
+video 6:
 
 https://www.youtube.com/watch?v=ESsMQ8tmRq8&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=7
 		
@@ -844,16 +849,17 @@ worflow
 		submit study 
 			
 
-
-
 ---------------------------------------------------------------------------------
 
-video 8:
+video 7:
+https://www.youtube.com/watch?v=l3d5olGHqKw&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=8
 
-sdtm
 
-	study
-	review documents
+sdtm - the basic 10 step workflow
+
+	1. study
+	
+	2. review documents
 		protocol
 		raw datasets
 		sdtm IG 3.2
@@ -861,7 +867,7 @@ sdtm
 		sop - standard operation procedure
 		sap - statistical analysis procedure
 		
-	acrf - blank crf with annotations that document the location of data with dataset names and variables	
+	3. acrf - blank crf with annotations that document the location of data with dataset names and variables	
 		blank crf
 		protocol
 		crf
@@ -874,34 +880,32 @@ sdtm
 			import xxfdf file inot pdf file and manual placement of the annotations-boxes in ther exact location
 			
 		
-	you are going to prepare
-		excel
-		crf columns 
-		sas = excel = xfdf
+		you are going to prepare
+			excel
+			crf columns 
+			sas = excel = xfdf
 		
-	sdtm mapping specification
+	4. sdtm mapping specification (data derived table)
 		utilize a spec from another project or create new
 		
-	programming plan / programming implementation
+	5. programming plan / programming implementation
 		TL or scrum master
 		who is working on 
 		5 domains and 5 porgammers
 		
-	sdtm output (
+	6. sdtm output (results - sas datasets)
 		results - sas datasets
 		in compliant with sdtm IG
 		
-	converting sas datasets into xpt files
-	
-	
-	pinnacle 21 
-	
+	7. converting sas datasets into xpt files
 		
-	define.xml (used for submission
-	validation notes
+	8. pinnacle 21 
 	
+	9. 2 outpput files...
+		1. define.xml (used for submission
+		2. validation notes
 	
-	submit study
+	10. submit study
 	
 
 sdtm domains
@@ -909,6 +913,8 @@ sdtm domains
 	notes... 
 	dataset is grouping of observations
 	domain is grouping of observations related from each dataset 
+	
+	class = FISTER = findings + interventions + special + trials + events + relationship
 
 
 	special purpose domains
@@ -1018,7 +1024,7 @@ sdtm IG
 		
 ---------------------------------------------------------------------------------
 
-video 9:		
+video 8:		
 
 sdtm guidelines
 
@@ -1032,14 +1038,35 @@ sdtm guidelines
 	4. final output should be in compliance with sdtm IG 3.2
 		role - describes type of information by the variable and how used
 	5. all sdtm date variables are of character data type
+		yymmdd10.
+		is8601da. = 2024-12-25
+		is8601dt. = 2024-12-25T21:00:00
+		
+
+		data x;
+		format xx yymmdd10. xxx is8601da. xxxx is8601dt.;
+		x=today();
+		xx=x;
+		xxx=x;
+		xxxx=x;
+		put _all_ ;
+		run;		
+	
+	FISTER = findings + interventions + special + trials + events + relationship
+
+core
+	req  - required
+	exp  - expected
+	perm - permissible
 
 
 role - 4 different roles
-	identifier variables - gives identification
+
+	1. identifier variables - gives identification
 		domain
 		studyid
 		usubjid
-	timing variables
+	2. timing variables
 		start date
 		end date
 		collection date
@@ -1048,7 +1075,7 @@ role - 4 different roles
 			  AEENDTC
 			  LBDTC
 			  VSDTC
-	topic variables
+	3. topic variable (FISTER = findings + interventions + special + trials + events + relationship)
 	
 		special purpose domains - only 1 topic variable per domain
 			dm - demographics			- subjid
@@ -1072,6 +1099,8 @@ role - 4 different roles
 			eg - ecg test				- egtestcd
 			pe - physical examination		- petestcd
 			ie - inclusion exclusion criteria	- ietestcd
+				i - inclusion
+				e - exclusion
 			dd - death details			- ddtestcd
 			da - drug accountability		- datestcd	
 		trial design models
@@ -1082,45 +1111,1049 @@ role - 4 different roles
 			ti - trial inclusion 			- ietestcd (same as ie)		
 			
 			
-	rule variables
+	4. rule variables
+		start rule and end rule information
+		te - trial elements
+			testrl - element start rule
+			teenrl - element end rule
+		tv - trial visits
+			tvstrl - tv start rule
+			tvenrl - tv end   rule
 
 qualifiers
-	record qualifier
-	result qualifier
-	grouping qualifier
-	synonym qualifier
-	variable qualifier
+	record qualifier - ask subject and record this information
+		examples:
+			sex
+			age
+			race
+			birth date
+			ethnic
+	result qualifier - information about any result
+		examples:
+			LBORRES  - lab original results
+			LBSTREXC - lab standard results in character
+			LBSTRESN - lab standard results in numeric
+			
+			VSORRES  - vital signs original results
+			VSSTREXC - vital signs standard results in character
+			VSSTRESN - vital signs standard results in numeric			
+	grouping qualifier - grouping information
+		examples:
+			LABCAT - urine analysis
+				LBTEST
+					1
+					2
+					3
+					4
+			LBSCAT - diabetes	
+				LBTEST
+					FBS
+					PBS
+					HB1AC
+			
+	synonym qualifier - similar meaning variables
+		examples
+			AETERM		AEDECOD (medical dictionary codes)
+			fever	  --->	pyroxia
+			head ache ---> 	head ache
+			
+	variable qualifier - which contain units
+		examples
+			AGEU - years
+			LBORRESU
+			VSORRESU
+
+	cdisc notes
+		guidelines for variables
+		how to derive / populate variables
+		exact meaning of the variables
 
 
-------------------------- start
-CDISC SDTM ADaM Online Training??SAS Clinical Projects Training??Clinical SAS Training by Experts - 8
-https://www.youtube.com/watch?v=Vg_53o9S-DA&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=10
-stopped on 32:00 / 55:11
+	next video start very 1st domain....
+		special purpose domains
+		DM - demographics
+
+	------------------------- start
+	CDISC SDTM ADaM Online Training??SAS Clinical Projects Training??Clinical SAS Training by Experts - 8
+	https://www.youtube.com/watch?v=Vg_53o9S-DA&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=10
+	stopped on 32:00 / 55:11
+
 
 
 ---------------------------------------------------------------------------------
-company + pharma + cro:
+
+video 9:
+https://www.youtube.com/watch?v=ZLfhUWGJado&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=10
+
+special purpose domains
+	DM - demographics
+	SDTM IG - use for domain creation
+
+	
+subject - patient participating in the study
+role
+	1. topic variable 	- SUBJID
+	2. identifier variable 	- STUYID
+	3. record qualifier 	- AGE, GENDER, DOB
+	
+
+clinical trials
+	1. healthy volunteers
+	2. patients suffering from same disease
+	3. patients suffering from other disease
+
+dates
+	1. icf signed date
+	2. treatment start date
+	3. treatment end date
+	4. death date
+	5. dm demographic information collection date
+	
+	ICF - inform consent form 
+	arms - different treatment groups
+		intervention group
+		control group
+	washout period - time takes for treatment to flush out of body and start other treatment
+	
+variables
+	STUDYID
+	DOMAIN
+	USUBJID
+	SUBJID
+	INVID - investigator identifier
+	INVNAM
+	RFICDTC
+	RFPENDTC
+	RFSTDTC
+	RFENDTC
+	RFXSTDTC
+	RFXENDTC
+	
+	ARM
+	ARMCD
+	ACTARM
+	ACTARMCD
+	
+	DTHDTC
+	DTHFL
+	BRTHDTC
+
+	SITEID - Unique identifier for a site within a study.
+	
+	AGE
+	AGEU
+	RACE
+	COUNTRY
+	ETHNIC
+	
+	DMDTC
+	DMDY
+
+-------------------------------------------------------------------
+
+identifier variable
+	structure - one record per subject - 1 row 
+	
+	
+	STUDYID 
+		study identifier
+		sponsor
+		name of the stud as mentioned within the protocol
+		example 
+			CT1PM CM_08_10
+			STUDYID=compbl('OLX.AVAIL.' || 'PSTM');
+	DOMAIN 
+		abbreviation of domain
+		2 characters long
+		upper case
+		example 
+			DM
+			DOMAIN="&domain.";
+	USUBJID 
+		unique subject identifier
+		derived by 3 variables
+			STUDYID + SITEID + SUBJID
+			create by concatenation of 3 variables
+		example
+			USUBJID	   ='OLX.AVAIL.' || "PSTM" || '.' || SUBJECTNUMBERSTR;
+			
+			
+	assignment 1 =============================================================================================================
+	
+		details as per protocol...
+			study name - NFP222G1 = STUDYID
+			site details - HK111
+			gender - m/f
+			domain - DM
+			
+		patient details (dataset)...
+			patient_ID	gender
+			111		M
+			222		Male
+			333		Female
+			444		F
+			555		f
+			666		m
+			777		1
+			888		2
+						
+				
+		desired output...
+		
+			STUDYID		DOMAIN		USUBJID			SUBJID	SEX
+			NFP222G1	DM		NFP222G1-HK111-111	111	M
+			NFP222G1	DM		NFP222G1-HK111-222	222	M
+			NFP222G1	DM		NFP222G1-HK111-333	333	F
+			NFP222G1	DM		NFP222G1-HK111-444	444	F
+			NFP222G1	DM		NFP222G1-HK111-555	555	F
+			NFP222G1	DM		NFP222G1-HK111-666	666	M
+			NFP222G1	DM		NFP222G1-HK111-777	777	M
+			NFP222G1	DM		NFP222G1-HK111-888	888	F		
+		
+		code...
+		
+			data data_patient;
+			input patient_ID $ gender $;
+			cards;
+			111		M
+			222		Male
+			333		Female
+			444		F
+			555		f
+			666		m
+			777		1
+			888		2
+			;
+			run;		
+		
+			data dm;
+			set data_patient;
+				label 	STUDYID	= 'Study Identifier' 
+					DOMAIN	= 'Domain Abbreviation'
+					USUBJID	= 'Unique Subject Identifier'
+					SUBJID	= 'Subject Identifier for the Study'
+					SEX	= 'Sex'
+					;
+					
+				SITEID  = "HK111";
+				STUDYID = "NFP222G1";
+				DOMAIN  = "DM";
+				USUBJID	= STUDYID ||'-'|| SITEID ||'-'|| patient_ID;
+				SUBJID  = patient_ID;
+				
+				if upcase(gender) = 'M' then SEX = 'M';
+				else if upcase(gender) = 'F' then SEX = 'F';
+				else if upcase(gender) = 'MALE' then SEX = 'M';
+				else if upcase(gender) = 'FEMALE' then SEX = 'F';
+				else if upcase(gender) = '1' then SEX = 'M';
+				else if upcase(gender) = '2' then SEX = 'F';
+				else SEX = 'U';
+				keep STUDYID DOMAIN USUBJID SUBJID SEX;
+			run;
+			
+
+	
+	INVID
+		investigator identifier
+		doctor ID/clinician ID/nurse ID
+		example
+			TIN - taxpayer identification number  (9 characters)
+
+	INVNAM
+		investigator name
+		name of doctor/clinician/nurse
+		exmaple
+			simon baker
+			james spader
+			
+	RFICDTC
+		rf - reference
+		ic - inform consent
+		dt - date
+		c  - character
+		Date/Time of Informed Consent
+		when the subject signed the IFC
+		all dates in sdtm are character
+		examples:
+			2022-04-12
+			yyyy-mm-dd
+			is8601da.
+			
+			2022-04-12T20:58:12
+			yyy-mm-dd-thh:mm:ss
+			is8601dt.
+				
+				
+	assignment 2 =============================================================================================================
+		
+		patient details (dataset)...
+			patient_ID	gender
+			111		M
+			222		Male
+			333		Female
+			444		F
+			555		f
+			666		m
+			777		1
+			888		2
+			
+		icf details (dataset)...
+			patient_ID	term		date		time
+			111		icf signed	09apr2016	10:01:12
+			222		icf signed	09sep2020	10:01:12
+			333		icf signed	19aug2020	10:01:12
+			444		icf signed	22jul2020	10:01:12
+			555		icf signed	15nov2020	10:01:12
+					
+		desired output...
+			SUBJID		SEX		RFICDTC
+			111		M		2016-04-09T10:01:12
+			222		M		2020-09-09T10:01:12
+			333		F		2020-08-19T10:01:12
+			444		F		2020-07-22T10:01:12
+			555		F		2020-11-15T10:01:12			
+
+		code...
+		
+			data formats - https://stats.oarc.ucla.edu/wp-content/uploads/2016/02/bt3007.pdf
+
+			data data_patient;
+			format patient_ID $20. gender $20. ;
+			input patient_ID $ gender $   ;
+			infile datalines delimiter=',';
+			cards;
+			111,M
+			222,Male
+			333,Female
+			444,F
+			555,f
+			666,m
+			777,1
+			888,2
+			;
+			run;	
+			
+			data data_icf;
+			format patient_ID $20. term $20. date date9. time time8.;
+			input patient_ID $ term $ date: date9. time: time8. ;
+			infile datalines delimiter=',';
+			cards;
+			111,icf signed,09apr2016,10:01:12
+			222,icf signed,09sep2020,10:01:12
+			333,icf signed,19aug2020,10:01:12
+			444,icf signed,22jul2020,10:01:12
+			555,icf signed,15nov2020,10:01:12
+			;
+			run;
+			
+			proc sort data = data_patient; by patient_ID; run;
+			proc sort data = data_icf; by patient_ID; run;
+					
+			data dm;
+			merge data_patient (in=a)
+			      data_icf (in=b);
+			by patient_ID;
+			if b;
+			
+				label 	STUDYID	= 'Study Identifier' 
+					DOMAIN	= 'Domain Abbreviation'
+					USUBJID	= 'Unique Subject Identifier'
+					SUBJID	= 'Subject Identifier for the Study'
+					SEX	= 'Sex'
+					RFICDTC	= 'Date/Time of Informed Consent'
+					;
+					
+				SITEID  = "HK111";	
+				STUDYID = "NFP222G1";
+				DOMAIN  = "DM";
+				USUBJID	= STUDYID ||'-'|| SITEID ||'-'|| patient_ID;
+				SUBJID  = patient_ID;
+				
+				if upcase(gender) = 'M' then SEX = 'M';
+				else if upcase(gender) = 'F' then SEX = 'F';
+				else if upcase(gender) = 'MALE' then SEX = 'M';
+				else if upcase(gender) = 'FEMALE' then SEX = 'F';
+				else if upcase(gender) = '1' then SEX = 'M';
+				else if upcase(gender) = '2' then SEX = 'F';
+				else SEX = 'U';
+				
+				**date='09apr2016'd;
+				**time='10:01:12't;  
+				X_RFICDT=dhms(date,0,0,time);
+				RFICDTC=put(X_RFICDT,is8601dt.);
+				RFICDTC2=put(input(catx(' ', put(date,yymmdd10.), put(time,time8.)), is8601dt.),is8601dt.);
+				
+				keep SUBJID SEX RFICDTC;
+			run;
+
+
+
+	RFSTDTC
+		subject reference start date and time in char
+		treatment start data and time in char
+	
+
+	RFENDTC
+		subject reference end date and time in char
+		study completed date and time in char -or- treatment end date in char
+			can be either one 
+			mutliple treatments within a study
+		
+		sequence of process...
+			icf signed
+			screening
+			random
+			treatment
+			follow up
+		
+		important note
+			1. when both are available...
+				treatment end data and study end data available
+				then priortity should be given to study end date
+				
+				4/04/2024 - treatment completed
+				4/11/2024 - follow up completed <---- final date = RFENDTC
+				
+			2. RFSTDTC/RFENDTC can be null for unassigned subjects
+				unassigned subjects - subjects failed in screening
+						      subjects who are dropped
+			
+
+	assignment 3 =============================================================================================================			
+
+		patient data...
+		
+			patient_ID	gender
+			111		M
+			222		Male
+			333		Female
+			444		F
+			555		f
+			666		m
+			777		1
+			888		2
+
+			
+		treatment details...
+		
+			patient_ID	treatment	treatment_date
+			111		Drug A		2020-04-09
+			111		Drug B		2020-12-11
+			111		Drug B		2020-07-17
+			222		Drug B		2020-09-12
+			222		Drug B		2020-10-10
+			333		Placebo		2020-08-11
+			444		Drug A		2020-07-13
+			444		Drug B		2020-07-31
+			444		Placebo		2020-09-07
+			555		Drug A		2020-06-16
+			555		Drug A		2020-09-15
+ 
+ 	
+ 		desired output.... date format will be is8601da not is8601dt
+
+			SUBJID		SEX		RFSTDTC		RFENDTC
+			111		M		2020-04-09	2020-12-11
+			222		M		2020-09-12	2020-10-10
+			333		F		2020-08-11	2020-08-11
+			444		F		2020-07-13	2020-09-07
+			555		F		2020-06-16	2020-09-15
+
+
+		code...
+		
+			data data_patient;
+			format patient_ID $20. gender $20. ;
+			input patient_ID $ gender $   ;
+			infile datalines delimiter=',';
+			cards;
+			111,M
+			222,Male
+			333,Female
+			444,F
+			555,f
+			666,m
+			777,1
+			888,2
+			;
+			run;	
+			
+			data data_treatment;
+			format patient_ID $20. treatment $20. treatment_date date9.  ;
+			input patient_ID $ treatment $ treatment_date: yymmdd10.  ;
+			infile datalines delimiter=',';
+			datalines;
+			111,Drug A,2020-04-09
+			111,Drug B,2020-12-11
+			111,Drug B,2020-07-17
+			222,Drug B,2020-09-12
+			222,Drug B,2020-10-10
+			333,Placebo,2020-08-11
+			444,Drug A,2020-07-13
+			444,Drug B,2020-07-31
+			444,Placebo,2020-09-07
+			555,Drug A,2020-06-16
+			555,Drug A,2020-09-15
+			;
+			run;
+
+			proc sort data = data_patient; by patient_ID; run;
+			proc sort data = data_treatment; by patient_ID; run;
+					
+			data dm;
+			merge data_patient 	(in=a)
+			      data_treatment    (in=b);
+			by patient_ID;
+			if b ;		
+
+				label 	STUDYID	= 'Study Identifier' 
+					DOMAIN	= 'Domain Abbreviation'
+					USUBJID	= 'Unique Subject Identifier'
+					SUBJID	= 'Subject Identifier for the Study'
+					SEX	= 'Sex'
+					RFSTDTC	= 'Subject Reference Start Date/Time'
+					RFENDTC	= 'Subject Reference End Date/Time'
+					;
+					
+				SITEID  = "HK111";	
+				STUDYID = "NFP222G1";
+				DOMAIN  = "DM";
+				USUBJID	= STUDYID ||'-'|| SITEID ||'-'|| patient_ID;
+				SUBJID  = patient_ID;
+				
+				if upcase(gender) = 'M' then SEX = 'M';
+				else if upcase(gender) = 'F' then SEX = 'F';
+				else if upcase(gender) = 'MALE' then SEX = 'M';
+				else if upcase(gender) = 'FEMALE' then SEX = 'F';
+				else if upcase(gender) = '1' then SEX = 'M';
+				else if upcase(gender) = '2' then SEX = 'F';
+				else SEX = 'U';
+				
+				/** solution - C:\Users\uy2huh5\Documents\Brian\bss\medtronic\Medtronic  ADaM ADSL\cdisc_book\chapter 3\DM.sas **/
+				/** step 1 - retain **/
+				retain treatment_start_date treatment_end_date; 
+				
+				/** step 2 - reset for each member **/
+				if first.patient_ID then do;
+					treatment_start_date = .;
+					treatment_end_date = .;
+				end;
+
+				/** step 3 - capture first and last date **/
+				treatment_start_date = min(treatment_date,treatment_start_date,treatment_end_date);
+				treatment_end_date   = max(treatment_date,treatment_start_date,treatment_end_date);
+
+				/** step 4 - output 1 record which will have first and last date **/
+				if last.patient_ID;
+				
+				X_RFSTDT=treatment_start_date;
+				RFSTDTC=put(X_RFSTDT,is8601da.);
+				
+				X_RFENDT=treatment_end_date;
+				RFENDTC=put(X_RFENDT,is8601da.);
+												
+				keep SUBJID SEX RFSTDTC RFENDTC ;
+			run;
+
+
+
+---------------------------------------------------------------------------------
+
+video 10:
+https://www.youtube.com/watch?v=KIANkyV27b8&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=11
+
+
+special purpose domain
+
+	DM - demographics
+	
+	subject
+	topic variable - SUBJID
+	identifier variable - STUDYID, DOMAIN, SIIBKOD
+	record qualifier variable - gender, age,dob
+	dates - icf signed date, treatment start date, treatment end date, death date
+
+	USUBJID = derived by concatenation of STUDYID + SITEID + SUBJID
+	
+	RFSTDTC - equivalent to date/time when subject was first exposed to study treatment.
+	
+
+
+RFXSTDTC
+	date time of first study treatmet
+	what is difference between RFXSTDTC vs RFSTDTC
+	
+		entire study start date and time in char format
+		example 1
+			study drug - fever
+			he is having vomiting sesation
+			first we provide drug to control vomit only after that we go with study drug
+			vomit (support treatment) - 4/10/2022 = RFXSTDTC
+			fever (study treatment)   - 4/11/2022 = RFSTDTC
+			
+			if subject doesnt go for any support treatment - in that case
+			RFXSTDTC = RFSTDTC
+		
+		example 2
+			multi center study / multi national study
+			RFXSTDTC = subject had a treatment in site1
+			RFSTDTC  = and same subject different treatment in site2 considering a washout period
+	
+		RFXSTDTC - First date/time of exposure to any protocol-specified 
+		treatment or therapy, equal to the earliest value of EXSTDTC.
+		
+		RFSTDTC - Reference start date/time for the subject in ISO 8601 character format. 
+		Usually equivalent to date/time when subject was first exposed to study treatment. 
+		See assumption 9 for additional detail on when RFSTDTC may be null.
+
+
+RFXENDTC
+	study treatment end date and time in char format
+	example
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC
+		111		M		2022-03-01	2022-03-02	2022-03-16	2022-03-16
+
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC
+		222		F		2022-03-01	2022-03-10	2022-03-16	2022-03-30 
+		
+		orthonet:
+			problem - burning knee cap
+				RFXSTDTC = 2022-03-01 = injecting gel in knee cap 	(original treatment)
+				RFSTDTC  = 2022-03-10 = knee replacement 		(study treatment)
+				RFXENDTC = 2022-03-16 = healing medicine		(study treatment ended)
+			follow up
+				RFENDTC  = 2022-03-30 = supporting medicine		(compelete treatment ended)
+
+RFPENDTC
+	reference end participation date and time char
+		study completion date
+		follow up date
+		death date
+		discontinue date
+		
+	example - subject starts on 2022-03-01 and stops... this becomes end participation date - RFPENDTC
+
+	example
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC		RFPENDTC
+		111		M		2022-03-01	2022-03-02	2022-03-16	2022-03-16	2022-03-16
+
+		
+		after RFXENDTC - 2022-03-16 the hospital doesnt need any more visits then RFXENDTC = RFENDTC + RFPENDTC
+
+		the patient doesnt attend follow up after RFSTDTC so no RFENDTC + RFPENDTC
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC		RFPENDTC
+		222		F		2022-03-01	2022-03-10	2022-03-16			
+		
+		so then RFENDTC = RFXENDTC
+		the patient doesnt attend follow up so no value for RFXENDTC becomes RFPENDTC
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC		RFPENDTC
+		222		F		2022-03-01	2022-03-10	2022-03-16	2022-03-16 	
+
+
+		the patient doesnt attend after RFXSTDTC... then everything blank but last participation = RFXSTDTC
+		SUBJID		SEX		RFXSTDTC	RFSTDTC		RFXENDTC	RFENDTC		RFPENDTC
+		222		F		2022-03-01					 	 	2022-03-01  
+
+
+
+	1 RFSTDTC  - R  = reference
+	2 RFENDTC  - R  = reference
+	3 RFXSTDTC - X  = treatment - 1st  treatment 
+	4 RFXENDTC - X  = treatment - last treatment
+	5 RFCSTDTC - C  = challenge agent
+	6 RFCENDTC - C  = challenge agent 
+	7 RFICDTC  - IC = informed consent
+	8 RFPENDTC - P  = end of participation
+	9 DTHDTC   - D  = death
+	
+	if first.USUBJID then do;
+		RFSTDTC  = VISIT_START;
+		RFENDTC  = VISIT_END;
+		RFXSTDTC = DOSE_START;
+		RFXENDTC = DOSE_END;
+		RFCSTDTC = VISIT_START;
+		RFCENDTC = VISIT_END;
+		RFICDTC  = INFORMED_CONSENT;
+		RFPENDTC = VISIT_END;
+	end;	
+
+
+DTHDTC
+	subject date and time in character format
+	ISO 8601 datetime
+	important note
+		domain - DS
+		if DSTERM = "DEATH" then DSSTDTC - death date
+		
+		domain - AE
+		if AEOUT  = "DEATH" then AEENDTC - death date
+		
+
+DTHFL
+	death flag - 2 values only - Y or N
+
+
+
+	assignment 4 =============================================================================================================
+	
+	input data
+	
+	demographic domain
+	patient details
+
+		patient_ID	gender
+		111		M
+		222		Male
+		333		Female
+		444		F
+		555		f
+		666		m
+		777		1
+		888		2
+
+	DS
+
+		patient_ID	term			stdt
+		111		death			2022-03-11
+		222		study completed		2022-04-14
+		333		study completed		2022-04-14
+		444		death			2022-03-31
+		555		study completed		2022-04-14
+			
+	desired output
+		
+		SUBJID	SEX	DTHDTC		DTHFL
+		111	M	2022-03-11	Y
+		222	M			N
+		333	F			N
+		444	F	2022-03-31	Y
+		555	F			N
+		
+		
+	code...
+	
+			data data_patient;
+			format patient_ID $20. gender $20. ;
+			input patient_ID $ gender $   ;
+			infile datalines delimiter=',';
+			cards;
+			111,M
+			222,Male
+			333,Female
+			444,F
+			555,f
+			666,m
+			777,1
+			888,2
+			;
+			run;	
+			
+			data data_death;
+			format stdt date9.  ;
+			input patient_ID: $20. term: $20. stdt: yymmdd10.  ;
+			infile datalines delimiter=',';
+			datalines;
+			111,Death,2020-04-09
+			222,study completed B,2020-09-12
+			333,study completed,2020-08-11
+			444,Death,2020-07-13
+			555,study completed,2020-06-16
+			;
+			run;	
+	
+	
+			proc sort data = data_patient; by patient_ID; run;
+			proc sort data = data_death; by patient_ID; run;
+					
+			data dm;
+			merge data_patient  (in=a)
+			      data_death    (in=b);
+			by patient_ID;
+			if a ;		
+
+				label 	STUDYID	= 'Study Identifier' 
+					DOMAIN	= 'Domain Abbreviation'
+					USUBJID	= 'Unique Subject Identifier'
+					SUBJID	= 'Subject Identifier for the Study'
+					SEX	= 'Sex' 
+					DTHFL   = 'Subject Death Flag'
+					DTHDTC  = 'Date/Time of Death'
+					;
+					
+				SITEID  = "HK111";	
+				STUDYID = "NFP222G1";
+				DOMAIN  = "DM";
+				USUBJID	= STUDYID ||'-'|| SITEID ||'-'|| patient_ID;
+				SUBJID  = patient_ID;
+				
+				if upcase(gender) = 'M' then SEX = 'M';
+				else if upcase(gender) = 'F' then SEX = 'F';
+				else if upcase(gender) = 'MALE' then SEX = 'M';
+				else if upcase(gender) = 'FEMALE' then SEX = 'F';
+				else if upcase(gender) = '1' then SEX = 'M';
+				else if upcase(gender) = '2' then SEX = 'F';
+				else SEX = 'U';
+				
+				if upcase(term) = 'DEATH' then DTHFL = 'Y';
+				else DTHFL = 'N';
+				
+				X_DTHDT=stdt;
+				DTHDTC=put(X_DTHDT,is8601da.);
+				if X_DTHDT = . then DTHDTC='';
+				if DTHFL = 'N' then DTHDTC='';
+												
+				keep SUBJID SEX DTHDTC DTHFL;
+			run;
+	
+	
+	
+	
+		
+BRTHDTC
+	subject date of birth in character format
+	
+AGE
+	subject age
+	when the icf was signed
+	
+	AGE = (RFICDTC - BRTHDTC) / 365.25
+	
+	note - most studys will last a year
+		however... hiv and cancer can last longer... so subject can be in study for 8 years
+
+AGEU
+	age in units
+	always years
+
+COUNTRY
+	represents with country code
+	it should be 3 characters long
+	example - USA, IND
+	
+	
+RACE
+	black
+	white
+	asia
+	other - italian, brazilian, canadian
+	important note
+		if race is OTHER we will passsing information to SUPPLEMENT domain
+		DM = SUPPDM
+		AE = SUPPAE
+		
+ETHNIC
+	ethnicity of respective country
+	LATIN AMERICAN
+	INIDAN
+	AMERICAN
+
+
+
+topics for next training session...
+
+DMDTC
+DMDY
+ARM
+ARMCD
+
+
+
+---------------------------------------------------------------------------------
+
+video 11:
+https://www.youtube.com/watch?v=UML32QDDaDM&list=PLbW_LFBIHlxu2abXtm0KE3HSZu1YCuRMO&index=12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+sas solutions:
+	https://support.sas.com/resources/papers/proceedings17/1352-2017.pdf
+
+	1. DETERMINE IF SETUP PROGRAMS ALREADY EXIST 	
+	2. TRANSFORM GENERAL VARIABLES BASED ON THE VARIABLE TYPE. 
+	3. DEALING WITH SPECIFIC VARIABLES FOR EACH DOMAIN 
+	4. TRANSFORM  DATA FROM HORIZONTAL TO VERTICAL (VS AND EG) 
+	5. CALCULATE --DY AND --SEQ VARIABLES 
+	6. CALCULATE --BLFL VARIABLES FOR SOME FINDINGS DOMAINS 
+	7. FINALIZE THE DATA AND SAVE TO SDTM LIBRARY 
+	8. NOTIFY UNSOLVED CDASH VARIABLES 
+
+cool sas + macros - Lilly + Parexel
+
+	https://github.com/77QingLiu/SAS-Program-Library/tree/d80fbc03deb935db3a90155408cd191f5a279317/2-SAS%20Learning/0-Macro
+	
+	SAS Papers related to CDISC - https://www.lexjansen.com/cdisc/
+	solutions...
+	Table driven Solution 1 - https://www.lexjansen.com/pharmasug/2007/ad/AD17.pdf
+	Automating SDTM Using a Metadata-Driven - https://pharmasug.org/proceedings/2024/MM/PharmaSUG-2024-MM-267.pdf
+	
+
+company IL - https://biopharmguy.com/links/state-il-all-geo.php
 
 company sites  
-https://careers.medpace.com/jobs?keywords=sas&location=&page=1&sortBy=relevance&country=United%20States
-https://www.syneoshealth.com/careers/jobs/15213319-sr-statistical-programmer
-https://jobs.iqvia.com/en/search-jobs/sas/United%20States/24443/1/2/6252001/39x76/-98x5/50/2
-https://careers.iconplc.com/jobs?q=sas&options=&page=1
-https://careers.iconplc.com/job/statistical-programmer-in-united-states-jid-39650
-https://careers.labcorp.com/global/en/job/2266899/Senior-Statistical-Programmer
-https://jobs.thermofisher.com/global/en/search-results?m=3&keywords=sas
-https://careers.abbvie.com/en/jobs?q=sas&options=&page=1&la=0&lo=0&lr=100
-https://jobs.parexel.com/en/search-jobs/sas/877/1?glat=37.4182014465332&glon=-121.9530029296875
-https://careers.smartrecruiters.com/BicycleTherapeutics/careers-page
-https://www.wcgclinical.com/about/careers/
-Katalyst HealthCares & Life Sciences (blocked at CVS - but lots of jobs)
-https://www.ingenworks.com/careers.php
-https://www.princetonpharmatech.com/about/careers/
-https://www.taihooncology.com/us/careers/job-postings/
-https://springworkstx.com/careers/view-opportunities
+	https://careers.medpace.com/jobs?keywords=sas&location=&page=1&sortBy=relevance&country=United%20States
+	https://www.syneoshealth.com/careers/jobs/15213319-sr-statistical-programmer
+	https://jobs.iqvia.com/en/search-jobs/sas/United%20States/24443/1/2/6252001/39x76/-98x5/50/2
+	https://careers.iconplc.com/jobs?q=sas&options=&page=1
+	https://careers.iconplc.com/job/statistical-programmer-in-united-states-jid-39650
+	https://careers.labcorp.com/global/en/job/2266899/Senior-Statistical-Programmer
+	https://jobs.thermofisher.com/global/en/search-results?m=3&keywords=sas
+	https://careers.abbvie.com/en/jobs?q=sas&options=&page=1&la=0&lo=0&lr=100
+	https://jobs.parexel.com/en/search-jobs/sas/877/1?glat=37.4182014465332&glon=-121.9530029296875
+	https://careers.smartrecruiters.com/BicycleTherapeutics/careers-page
+	https://www.wcgclinical.com/about/careers/
+	Katalyst HealthCares & Life Sciences (blocked at CVS - but lots of jobs)
+	https://www.ingenworks.com/careers.php
+	https://www.princetonpharmatech.com/about/careers/
+	https://www.taihooncology.com/us/careers/job-postings/
+	https://springworkstx.com/careers/view-opportunities
+	https://careers.sagerx.com/jobs/?search=cro&pagesize=20#results
+
+big company
+	Merck - https://jobs.merck.com/us/en/search-results?keywords=sas
+	Bristol Myers Squibb - https://jobs.bms.com/careers?query=SAS%20Institute&pid=137465018148&domain=bms.com&sort_by=relevance&triggerGoButton=false
+	Johnson & Johnson - 
+	AstraZeneca
+	GlaxoSmithKline - GSK
+	celgene
+	biogen
+	amgen
+	pfizer - https://www.pfizer.com/about/careers
+	Sanofi
+	roche
+	eli lilly
+	gilead sciences
+	abbvie
+	abbot
+	novartis
+	baxter
+
+
+small company
+	https://clinicaltrials.gov/
+	https://clinicaltrials.gov/search?term=Adaptimmune
+	https://clinicaltrials.gov/study/NCT03391778?term=Adaptimmune&rank=1
+
+	WizSolution Research LLC <-------------------------------------------- cro
+	LLX Solutions LLC <-------------------------------------------- cro
+	prometrika <-------------------------------------------- cro
+	katalyst healthcare & life sciences <-------------------------------------------- cro (lots of jobs on site)
+
+
+	Invivyd <-------------------------------------------- sponsor - biopharmaceutical viral infectious diseases
+	Adaptimmune <-------------------------------------------- sponsor - cell therapies / hire consultants
+	https://www.adaptimmune.com/pipeline
+	dataplus pharma services
+	tesaro, Inc 
+	Eliassen Group <-------------------------------------------- cro / hire consultants = mansfield, MA
+	alira health 
+	accell clinical research <-------------------------------------------- cro / hire consultants = warrenton, virginia
+	ascentage pharma
+
+	iavi <-------------------------------------------- abby isaacs from valence health
+	biomarin
+	ionis pharmaceuticals
+	portola pharmaceuticals - Portola is now a wholly owned subsidiary of Alexion in 2020
+
+
+Jobs in IL
+
+	Illinois Biotech, Pharmaceutical & Life Sciences Companies - https://biopharmguy.com/links/state-il-all-geo.php
+
+	Abbott - https://www.jobs.abbott/us/en/search-results?keywords=sas
+	Statistical Analyst - Medical Devices
+	Clinical Data Management Analyst
+	Sr. Manager Post Market Reporting and Data Analytics
+
+
+	Pfizer			Lake Forest, IL	Sterile Injectables
+	Spherotech		Lake Forest, IL	Microparticles for Diagnostics
+	Fresenius Kabi		Lake Zurich, IL	Infusion Therapy
+	Tian Medical		Libertyville, IL	Nasal Injector
+	Nexus Pharmaceuticals	Lincolnshire, IL	Repurposing off-patent molecules
+	Hubly Surgical		Lisle, IL	Brain Surgery Drill
+	Ontogen Medtech		Lisle, IL	Medical device development services
+	bioMerieux		Lombard, IL	Diagnostics
+	Fresenius Kabi		Melrose Park, IL	Contract Manufacturing
+	Vyaire Medical		Mettawa, IL	Respiratory-related Devices
+	Regis Technologies	Morton Grove, IL	Synthesis & Separations
+	SparX Biopharmaceutical	Mount Prospect, IL	Antibody Therapies
+	AtCor Medical		Naperville, IL	Cardiovascular diagnostic devices
+	Cloudbyz		Naperville, IL	Clinical Trial Management Software
+	Endotronix		Naperville, IL	Wireless Health Monitoring
+	Human Cell		Naperville, IL	Contract Manufacturing, Research Reagents
+	physIQ			Naperville, IL	Proprietary personalized analytics and IT platform
+	32 Biosciences		North Chicago, IL	Microbiome Therapeutics & Diagnostics
+	AbbVie			North Chicago, IL	Small Molecules, Biologics, Contract Manufacturing
+	BLR Bio			North Chicago, IL	Cancer Therapy
+	Astellas		Northbrook, IL	Small Molecules, ADC, Cell Therapy, Gene Therapy, Viral, Antibodies
+	Endevica Bio		Northbrook, IL	Cachexia Treatment
+	GenUs BioSystems	Northbrook, IL	Optimization of microarray experimentation and analysis
+
+
+Good info and overview of topics - https://www.sofpromed.com/what-is-an-electronic-data-capture-edc-system-in-clinical-trials
+https://www.sofpromed.com/
+https://www.sofpromed.com/list-of-cros-for-clinical-trials-in-the-united-states
+	1. Sofpromed
+	2. ProTrials Research, Inc.
+	3. Cromos Pharma
+	4. Medelis <-------------------------------------------- good one
+	5. Criterium
+	6. Advanced Clinical
+	7. Quality Data Service
+	8. Prometrika <-------------------------------------------- good one
+	9. Veristat
+	10. InClin
+	11. ProSciento
+	12. Emmes  <-------------------------------------------- good one
+	13. Spaulding Clinical
+	14. Lotus Clinical Research
+	15. PRC Clinical
+	16. SciQuus Oncology
+	17. MMS
+	18. MCRA  <-------------------------------------------- IQVIA
+	19. Integrium
+	20. Theradex
+
+
+EDC - Electronic Data Capture Systems
+https://www.sofpromed.com/best-10-electronic-data-capture-systems-for-clinical-trials
+	Viedoc
+	Anju TrialMaster
+	Medrio
+	Medidata Rave
+	Clinical One
+	OpenClinica
+	Marvin
+	Castor
+	Veeva Vault
+	Klindat
+	
+https://communities.sas.com/t5/SAS-Health-and-Life-Sciences/Do-EDC-solutions-often-provide-direct-access-to-data-from-SAS/td-p/198823
+
 
 
 Top Clinical Research Organizations (CRO)
+https://biopharmguy.com/links/company-by-location-clinical-research.php
 https://guides.clarahealth.com/top-clinical-research-organizations/
 https://www.ventureradar.com/startup/CRO
 https://www.proclinical.com/blogs/2024-5/top-10-cros-to-watch-in-2024
